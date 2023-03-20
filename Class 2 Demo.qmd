@@ -1,0 +1,31 @@
+---
+title: "Class 2 Demo - How to Quarto"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+```
+
+This is the class 2 quarto demonstration.
+
+## Read in Taylor Swift Data
+
+The below lines of code read in the TS data:
+
+```{r}
+TS_data <- readxl::read_xlsx('Lecture_1.2/Taylor_Swift_Spotify_Data.xlsx')
+```
+
+## Most Danceable TS Songs
+
+These are the top 5 danceable TS Songs:
+
+```{r, echo = FALSE}
+Most_dance <- TS_data %>% 
+  filter(Danceability > .8) %>% 
+  select(c(Album, `Song Name`, Danceability))
+
+knitr::kable(Most_dance)
+```
