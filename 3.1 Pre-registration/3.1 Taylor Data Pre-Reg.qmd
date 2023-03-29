@@ -1,0 +1,17 @@
+---
+title: "Taylor Data Pre-Registration"
+format: html
+editor: visual
+---
+
+```{r}
+library(taylor)
+
+taylor_album_songs <- taylor_album_songs
+```
+
+I am creating a pre-registration for a study with the hypothesis that tracks from Taylor's albums which have high danceability, energy, and tempo are more likely to be released as singles.
+
+In order to complete this analysis, I will create a combined score 'poppy', which is an established method of determining the degree to which a song is high energy in my vast reading of the literature (insert citation here). This takes the mean score of danceability, energy, and tempo, and combines them into a poppy total score.
+
+After creating this poppy total score, I will evaluate a logistic regression model to examine the association between poppyness of a song and liklihood of release as a single. I will control for whether or not it was a bonus track since bonus tracks are less likely to be released as singles.

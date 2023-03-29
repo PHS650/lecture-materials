@@ -1,0 +1,47 @@
+---
+title: "Week 2 - Lecture 2: Intro to the Class Data"
+format: html
+editor: visual
+---
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+1.  Read in Spotify Data
+
+    ```{r}
+    spotify_songs <- tidytuesdayR::tt_load('2020-01-21')$spotify_
+    ```
+
+2.  List all the variables in the dataset
+
+    ```{r}
+    names(spotify_songs)
+    ```
+
+3.  Identify how many artists there are in the database and place this in a sentence.
+
+    ```{r}
+    artist_n <- dplyr::n_distinct(spotify_songs$track_artist)
+    ```
+
+There are `r artist_n` artists in the database.
+
+4.  List the subgenres of 'edm'
+
+```{r}
+edm <- spotify_songs %>% 
+  filter(playlist_genre == 'edm') 
+unique(edm$playlist_subgenre)
+```
+
+5.  Create a bar chart showing the average popularity of songs in the dataset across subgenres of edm
+
+    ```{r}
+    ggplot(edm, aes(fill = playlist_subgenre, y = track_popularity, x = playlist_subgenre)) + 
+      geom_bar(stat = 'identity')
+    ```
+
+6.  In our in-class projects, we will create new variables to explore in the dataset (and add to the existing data dictionary in the tidy tuesday readme). Discuss with partner(s) 1-2 ideas for a new variable to add by manipulating the existing variables, and create these new variables in your version of the data. Discuss potential ideas for analysis which uses these new variables.
